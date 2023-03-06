@@ -3,8 +3,10 @@ import { AppModule } from './app.module';
 import { urlencoded, json } from 'express';
 import * as bodyParser from 'body-parser';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ConfigService } from '@nestjs/config';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
+    const configService = app.get<ConfigService>(ConfigService);
     app.use(json({ limit: '1000mb' }));
     app.use(urlencoded({ extended: true, limit: '1000mb' }));
     const config = new DocumentBuilder()
@@ -15,7 +17,7 @@ async function bootstrap() {
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('swagger', app, document);
     app.enableCors();
-    await app.listen(3008);
+    await app.listen(configService.get('PORT'));
 }
 
 bootstrap();
