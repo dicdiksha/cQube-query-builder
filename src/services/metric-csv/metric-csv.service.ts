@@ -15,14 +15,17 @@ export class MetricCsvService {
                 jsonArray.sort((a, b) => a['Sequence Number'] - b['Sequence Number']);
                 let data = []
                 jsonArray.forEach((row: any) => {
-                    let temp = {
-                        programName: row['Program Name'],
-                        tooltip: row['Program Information'],
-                        navigationUrl: row['Navigation URL'],
-                        imageUrl: row['Image URL'],
-                        menuName: row['Menu Name']
+                    if (row['Show'] == 'TRUE') {
+                        let temp = {
+                            programName: row['Program Name'],
+                            tooltip: row['Program Information'],
+                            navigationUrl: row['Navigation URL'],
+                            imageUrl: row['Image URL'],
+                            menuName: row['Menu Name'],
+                            programID:row['Program Id']
+                        }
+                        data.push(temp)
                     }
-                    data.push(temp)
                 });
                 return {
                     code: 200,
