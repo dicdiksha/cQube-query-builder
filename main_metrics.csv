@@ -1,3 +1,3 @@
-Sr. No.,Sequence Number,Program Name,Program Information,Navigation URL,Image URL,Menu Name,Show,Program Id
-1,1,Student Attendance,Student Attendance,/student-attendance,student_attendance.png,Student Attendance,TRUE,studentAttendance
-2,2,Review Meetings,Review Meetings,/review-meetings,review_meetings.png,Review Meetings,TRUE,reviewMeetings
+Sr. No.,Sequence Number,Program Name,Program Information,Navigation URL,Image URL,Menu Name,Program Id
+1,1,Student Attendance,Student Attendance,/student-attendance,student_attendance.png,Student Attendance,studentAttendance
+2,2,Review Meetings,Review Meetings,/review-meetings,review_meetings.png,Review Meetings,reviewMeetings
