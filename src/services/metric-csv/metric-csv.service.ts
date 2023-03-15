@@ -19,9 +19,9 @@ export class MetricCsvService {
                 jsonArray.sort((a, b) => a['Sequence Number'] - b['Sequence Number']);
                 let data = [];
                 jsonArray1.forEach((row: any) => {
-                    if (row['Status'] == 'true') {
+                    if (row['status'] == 'true') {
                         jsonArray.forEach((data1: any) => {
-                            if (row['Program Id'] == data1['Program Id']) {
+                            if (row['program Id'] == data1['Program Id']) {
                                 let  temp = {
                                     programName: data1['Program Name'],
                                     tooltip: data1['Program Information'],
