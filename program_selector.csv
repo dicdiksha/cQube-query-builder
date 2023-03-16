@@ -1,4 +1,4 @@
-status,program Id
+status,program_id
 true,studentAttendance
 true,teacherAttendance
 true,reviewMeetings
