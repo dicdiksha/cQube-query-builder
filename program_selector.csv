@@ -1,10 +1,10 @@
-Status,Program Id
+status,program_id
 true,studentAttendance
-false,teacherAttendance
+true,teacherAttendance
 true,reviewMeetings
-false,pgi
-false,pmPoshan
-false,udise
-false,nas
-false,diksha
-false,nishtha
+true,pgi
+true,pmPoshan
+true,udise
+true,nas
+true,diksha
+true,nishtha
