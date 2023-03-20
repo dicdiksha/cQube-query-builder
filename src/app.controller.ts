@@ -1,15 +1,17 @@
-import { Body, Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Res, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import { DatabaseService } from './database/database.service';
 import {Response} from 'express';
 import { MetricCsvService } from './services/metric-csv/metric-csv.service';
 import { JwtGuard } from './guards/jwt.guard';
 import * as jwt from 'jsonwebtoken';
+import { UpdatedDateService } from './services/updated-date/updated-date.service';
 
 
 @Controller()
 export class AppController {
-    constructor(private readonly appService: AppService, private databaseService: DatabaseService, private metricService: MetricCsvService) {
+    constructor(private readonly appService: AppService, private databaseService: DatabaseService, private metricService: MetricCsvService,
+        private updatesDate:UpdatedDateService) {
     }
 
     @Get()
@@ -72,4 +74,21 @@ export class AppController {
 //   async getLastModified(): Promise<Date> {
 //     return this.s3Service.getLastModified();
 //   }
+
+
+  @Get('lastmodified')
+  async getFileStatus(@Query() query: any, @Res()response: Response) {
+      try {
+          let result: any = await this.updatesDate.getLastModified(query);
+          if (result.code == 400) {
+              response.status(400).send({"message": result.error});
+          } else {
+              response.status(200).send({"fileMetaData": result.response});
+          }
+      }
+      catch (e) {
+          console.error('get-filestatus-impl: ', e.message);
+          throw new Error(e);
+    }
+  }
 }
