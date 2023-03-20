@@ -10,31 +10,26 @@ export class UpdatedDateService {
     private s3: S3;
     private readonly s3BucketName: string;
     private readonly containerFolderName: string;
-    private readonly minioClient: Minio.Client;
+    private  minioClient: Minio.Client;
+    private readonly storageType:string
 
     constructor(private readonly configService: ConfigService,) {
-        this.s3BucketName = this.configService.get<string>('AWS_BUCKET_NAME');
+        this.s3BucketName = this.configService.get<string>('S3_BUCKET');
         this.containerFolderName = this.configService.get<string>('CONTAINER_FOLDER_NAME');
+        this.storageType = this.configService.get<string>('STORAGE_TYPE');
+
         this.s3 = new S3({
             accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY'),
             secretAccessKey: this.configService.get<string>('AWS_SECRET_KEY'),
             region: this.configService.get<string>('AWS_BUCKET_REGION'),
-        });
-
-        this.minioClient = new Client({
-            endPoint: this.configService.get('END_POINT'),
-            port: Number(this.configService.get('MINIO_PORT')),
-            useSSL: false,
-            accessKey: this.configService.get('MINIO_ACCESS_KEY'),
-            secretKey: this.configService.get('MINIO_SECRET_KEY'),
-        });
-
+        }); 
     }
     
     async getLastModified(inputData) {
         const programFolderName = inputData.ProgramName;
-        try {
-            if (inputData.storageServiceType == 'AWS_S3') {
+        console.log(programFolderName);
+        try { 
+            if (this.storageType == 'aws_s3') {
                 const params = {
                     Bucket: this.s3BucketName,
                     Prefix: `${this.containerFolderName}/${programFolderName}/`,
@@ -58,7 +53,14 @@ export class UpdatedDateService {
                     }
                 }
             }
-            else if (inputData.storageServiceType == 'ON_PREMISE') {
+            else if (this.storageType == 'local') {
+                this.minioClient = new Client({
+                    endPoint: this.configService.get('MINIO_END_POINT'),
+                    port: Number(this.configService.get('MINIO_PORT')),
+                    useSSL: false,
+                    accessKey: this.configService.get('MINIO_ACCESS_KEY'),
+                    secretKey: this.configService.get('MINIO_SECRET_KEY'),
+                });
                 const minioBucket = this.configService.get<string>('MINIO_BUCKET')
                 const objects = await this.minioClient.listObjectsV2(minioBucket, `${this.containerFolderName}/${programFolderName}`, true);
                 let latestModifiedTime = new Date(0);
@@ -66,7 +68,7 @@ export class UpdatedDateService {
                     if (obj.lastModified > latestModifiedTime) {
                         latestModifiedTime = obj.lastModified;
                         return { code: 200, response: latestModifiedTime }
-                    }
+                    } 
                 }
                 if (latestModifiedTime > latestModifiedTime) {
                     return { code: 200, response: latestModifiedTime };
@@ -75,8 +77,8 @@ export class UpdatedDateService {
                     return { code: 400, error: "No data found" }
                 }
             }
-            else if (inputData.storageServiceType == 'AZURE_DATA_LAKE') {
-                const connectionString = this.configService.get<string>('CONNECTION_STRING');
+            else if (this.storageType == 'azure') {
+                const connectionString = this.configService.get<string>('AZURE_CONNECTION_STRING');
                 const containerName = this.configService.get<string>('AZURE_CONTAINER');
                 const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
                 const containerClient = blobServiceClient.getContainerClient(containerName);
@@ -105,7 +107,7 @@ export class UpdatedDateService {
                     error: "No Storage Found "
                 }
             }
-        }
+        } 
         catch (error) {
             console.error('impl.UpdatedDateService.error', error.message);
             return {
@@ -115,6 +117,5 @@ export class UpdatedDateService {
         }
 
     }
-
-
+    
 }
