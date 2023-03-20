@@ -6,6 +6,8 @@ import {ConfigModule, ConfigService} from '@nestjs/config';
 import {TypeOrmModule} from '@nestjs/typeorm'
 import {DatabaseModule} from './database/database.module';
 import { MetricCsvService } from './services/metric-csv/metric-csv.service';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
 
@@ -27,6 +29,10 @@ import { MetricCsvService } from './services/metric-csv/metric-csv.service';
             }),
             inject: [ConfigService],
         }),
+        ServeStaticModule.forRoot({
+            rootPath: join(__dirname, '..', 'src/maps'),
+            renderPath: new RegExp('^/assets')
+        })
     ],
 })
 export class AppModule {
