@@ -1,10 +1,10 @@
-Sr. No.,Sequence Number,Program Name,Program Information,Navigation URL,Image URL,Menu Name,Program Id
-1,1,Student Attendance,Student Attendance,/student-attendance,student_attendance.png,Student Attendance,studentAttendance
-2,2,Review Meetings,Review Meetings,/review-meetings,review_meetings.png,Review Meetings,reviewMeetings
-3,3,Teacher Attendance,Teacher Attendance,/teacher-attendance,review_meetings.png,Teacher Attendance,teacherAttendance
-4,4,PGI,PGI,/pgi,review_meetings.png,PGI,pgi
-5,5,PM Poshan,PM Poshan,/pmposhan,review_meetings.png,PM POSHAN,pmPoshan
-6,6,UDISE+,UDISE+,/udise,student_attendance.png,UDISE+,udise
-7,7,NAS,NAS,/nas,review_meetings.png,NAS,nas
-8,8,DIKSHA,DIKSHA,/diksha,student_attendance.png,DIKSHA,diksha
-9,9,NISHTHA,NISHTHA,/nishtha,review_meetings.png,NISHTHA,nishtha
+"Sr. No.","Sequence Number","Program Name","Program Information","Navigation URL","Image URL","Program Id"
+1,1,"Student Attendance","Student Attendance","/student-attendance","student_attendance.png","studentAttendance"
+2,2,"Review Meetings","Review Meetings","/review-meetings","review_meetings.png","reviewMeetings"
+3,3,"Teacher Attendance","Teacher Attendance","/teacher-attendance","teacher_attendance.png","teacherAttendance"
+4,4,"PGI","PGI","/pgi","pgi.png","pgi"
+5,5,"PM Poshan","PM Poshan","/pmposhan","pmposhan.png","pmPoshan"
+6,6,"UDISE+","UDISE+","/udise","udise.png","udise"
+7,7,"NAS","NAS","/nas","nas.png","nas"
+8,8,"DIKSHA","DIKSHA","/diksha","diksha.png","diksha"
+9,9,"NISHTHA","NISHTHA","/nishtha","nishtha.png","nishtha"

@@ -27,7 +27,6 @@ export class MetricCsvService {
                                     tooltip: data1['Program Information'],
                                     navigationUrl: data1['Navigation URL'],
                                     imageUrl: data1['Image URL'],
-                                    menuName: data1['Menu Name'],
                                     programID: data1['Program Id']
                                 }
                                 data.push(temp)
