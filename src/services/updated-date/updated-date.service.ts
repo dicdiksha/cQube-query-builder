@@ -10,8 +10,8 @@ export class UpdatedDateService {
     private s3: S3;
     private readonly s3BucketName: string;
     private readonly containerFolderName: string;
-    private  minioClient: Minio.Client;
-    private readonly storageType:string
+    private minioClient: Minio.Client;
+    private readonly storageType: string
 
     constructor(private readonly configService: ConfigService,) {
         this.s3BucketName = this.configService.get<string>('S3_BUCKET');
@@ -22,14 +22,14 @@ export class UpdatedDateService {
             accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY'),
             secretAccessKey: this.configService.get<string>('AWS_SECRET_KEY'),
             region: this.configService.get<string>('AWS_BUCKET_REGION'),
-        }); 
+        });
     }
-    
+
     async getLastModified(inputData) {
         const programFolderName = inputData.ProgramName;
         console.log(programFolderName);
-        try { 
-            if (this.storageType == 'aws_s3') {
+        try {
+            if (this.storageType == 'aws') {
                 const params = {
                     Bucket: this.s3BucketName,
                     Prefix: `${this.containerFolderName}/${programFolderName}/`,
@@ -44,7 +44,7 @@ export class UpdatedDateService {
                 const lastModifiedObject = objects.Contents.reduce((prev, current) => {
                     return prev.LastModified > current.LastModified ? prev : current;
                 });
-                console.log('last',lastModifiedObject);
+                console.log('last', lastModifiedObject);
 
                 if (lastModifiedObject) {
                     return {
@@ -68,7 +68,7 @@ export class UpdatedDateService {
                     if (obj.lastModified > latestModifiedTime) {
                         latestModifiedTime = obj.lastModified;
                         return { code: 200, response: latestModifiedTime }
-                    } 
+                    }
                 }
                 if (latestModifiedTime > latestModifiedTime) {
                     return { code: 200, response: latestModifiedTime };
@@ -76,9 +76,9 @@ export class UpdatedDateService {
                 else {
                     return { code: 400, error: "No data found" }
                 }
-            }
+            } 
             else if (this.storageType == 'azure') {
-                const connectionString = this.configService.get<string>('AZURE_CONNECTION_STRING');
+                    const connectionString = this.configService.get<string>('AZURE_CONNECTION_STRING');
                 const containerName = this.configService.get<string>('AZURE_CONTAINER');
                 const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
                 const containerClient = blobServiceClient.getContainerClient(containerName);
@@ -96,10 +96,10 @@ export class UpdatedDateService {
                 }
                 if (latestDate) {
                     return { code: 200, response: latestDate }
-                }
+                } 
                 else {
                     return { code: 400, error: "No data found" }
-                }
+                } 
             }
             else {
                 return {
@@ -107,7 +107,7 @@ export class UpdatedDateService {
                     error: "No Storage Found "
                 }
             }
-        } 
+        }
         catch (error) {
             console.error('impl.UpdatedDateService.error', error.message);
             return {
@@ -117,5 +117,5 @@ export class UpdatedDateService {
         }
 
     }
-    
+
 }
