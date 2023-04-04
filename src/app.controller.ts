@@ -41,7 +41,6 @@ export class AppController {
     }
 
     @Post('/query')
-    @UseGuards(JwtGuard)
     async executeQuery(@Body() body: any, @Res() response: Response) {
         try {
             let result = await this.databaseService.executeQuery(body?.query);
@@ -55,7 +54,6 @@ export class AppController {
     } 
 
     @Get('/metric')
-    @UseGuards(JwtGuard)
     async csvtoJson(@Res()response: Response) {
         try {
             let result = await this.metricService.convertCsvToJson();
