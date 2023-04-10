@@ -26,14 +26,6 @@ import { HttpModule, HttpService } from '@nestjs/axios';
       provide: APP_GUARD,
       useClass: AuthGuard,
     },
-    {
-      provide: APP_GUARD,
-      useClass: ResourceGuard,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: RoleGuard,
-    },
     MetricCsvService, UpdatedDateService],
   imports: [
     DatabaseModule,HttpModule,
