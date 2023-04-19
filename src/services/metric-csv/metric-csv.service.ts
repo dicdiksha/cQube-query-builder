@@ -16,7 +16,6 @@ export class MetricCsvService {
                 const stream1 = fs.createReadStream(filePath1);
                 const jsonArray = await csv().fromStream(stream);
                 const jsonArray1 = await csv().fromStream(stream1);
-                jsonArray.sort((a, b) => a['Sequence Number'] - b['Sequence Number']);
                 let data = [];
                 jsonArray1.forEach((row: any) => {
                     if (row['status'] == 'true') {
@@ -27,14 +26,15 @@ export class MetricCsvService {
                                     tooltip: data1['Program Information'],
                                     navigationUrl: data1['Navigation URL'],
                                     imageUrl: data1['Image URL'],
-                                    menuName: data1['Menu Name'],
-                                    programID: data1['Program Id']
+                                    programID: data1['Program Id'],
+                                    orderBy: data1['Sequence Number']
                                 }
                                 data.push(temp)
                             }
                         })
                     }
                 });
+                data.sort((a, b) => a.orderBy - b.orderBy);
                 return {
                     code: 200,
                     message: 'Metric data returned successfully',
