@@ -1,9 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { S3 } from 'aws-sdk'
 import { ConfigService } from '@nestjs/config';
 import * as Minio from 'minio';
 import { Client } from 'minio';
 import { BlobServiceClient } from '@azure/storage-blob';
+import * as oci from 'oci-sdk';
+import * as objectstorage from 'oci-objectstorage';
+import { Region } from 'oci-common';
+import { GetNamespaceResponse } from 'oci-objectstorage/lib/response';
 
 @Injectable()
 export class UpdatedDateService {
@@ -23,11 +27,11 @@ export class UpdatedDateService {
             secretAccessKey: this.configService.get<string>('AWS_SECRET_KEY'),
             region: this.configService.get<string>('AWS_BUCKET_REGION'),
         });
+
     }
 
     async getLastModified(inputData) {
         const programFolderName = inputData.ProgramName;
-        console.log(programFolderName);
         try {
             if (this.storageType == 'aws') {
                 const params = {
@@ -44,7 +48,6 @@ export class UpdatedDateService {
                 const lastModifiedObject = objects.Contents.reduce((prev, current) => {
                     return prev.LastModified > current.LastModified ? prev : current;
                 });
-                console.log('last', lastModifiedObject);
 
                 if (lastModifiedObject) {
                     return {
@@ -76,9 +79,9 @@ export class UpdatedDateService {
                 else {
                     return { code: 400, error: "No data found" }
                 }
-            } 
+            }
             else if (this.storageType == 'azure') {
-                    const connectionString = this.configService.get<string>('AZURE_CONNECTION_STRING');
+                const connectionString = this.configService.get<string>('AZURE_CONNECTION_STRING');
                 const containerName = this.configService.get<string>('AZURE_CONTAINER');
                 const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
                 const containerClient = blobServiceClient.getContainerClient(containerName);
@@ -96,10 +99,44 @@ export class UpdatedDateService {
                 }
                 if (latestDate) {
                     return { code: 200, response: latestDate }
-                } 
+                }
                 else {
                     return { code: 400, error: "No data found" }
-                } 
+                }
+            }
+            else if (this.storageType == 'oracle') {
+                const config = {
+                    authenticationDetailsProvider: new oci.ConfigFileAuthenticationDetailsProvider(),
+                    region: Region,
+                };
+                const objectStorageClient = new objectstorage.ObjectStorageClient(config);
+
+                const response: GetNamespaceResponse = await objectStorageClient.getNamespace({});
+                const listObjectsDetails = {
+                    namespaceName: response.value,
+                    bucketName: process.env.ORACLE_BUCKET,
+                    prefix: `${this.containerFolderName}/${programFolderName}/`,
+                };
+
+                const objectsResponse = await objectStorageClient.listObjects(listObjectsDetails);
+
+                const objects = objectsResponse.listObjects.objects;
+                if (objects.length > 0) {
+                    const objectName = objects[0].name;
+                    const objectMetadataResponse = await objectStorageClient.headObject({
+                        namespaceName: response.value,
+                        bucketName: process.env.ORACLE_BUCKET,
+                        objectName,
+                    });
+                    const lastModified = objectMetadataResponse.lastModified;
+                    return {
+                        code: 200,
+                        response: lastModified
+                    }
+                }
+                else {
+                    return { code: 400, error: "No data found" }
+                }
             }
             else {
                 return {
@@ -115,7 +152,5 @@ export class UpdatedDateService {
                 error: error.message
             }
         }
-
     }
-
 }
