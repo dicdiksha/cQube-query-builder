@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Pool, QueryResult } from 'pg';
-const mappings = require('../maps/table_names.json')
+import * as mappings from '../maps/table_names.json';
 @Injectable()
 export class DatabaseService {
     private readonly logger = new Logger(DatabaseService.name);
