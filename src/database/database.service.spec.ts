@@ -35,10 +35,29 @@ describe('DatabaseService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should change he query text', async () => {
+  it('should change the query text', async () => {
     const queryText = 'SELECT * FROM nishtha_courseenrolment_state0programnishtha0coursenishtha';
     const preprocessedQuery = service.preprocessQuery(queryText);
     expect(preprocessedQuery).toBe('SELECT * FROM nishtha_courseenrolment_EwYGERgJDCwmBx0PDmFl')
   })
+
+  it('should reject not whitelisted queries', async () => {
+    try {
+      await service.executeWhiteListedQuery('SELECT * FROM nishtha_courseenrolment_state0programnishtha0coursenishtha', []);
+    } catch (err) {
+      expect(err.message).toBeDefined();
+      expect(err.message).toBe('Query not found');
+    }
+  })
+
+  it('should execute whitelisted queries', async () => {
+    try {
+      const res = await service.executeWhiteListedQuery('select category_name from dimensions.categorypgi', []);
+      expect(res).toBeDefined();
+    } catch (err) {
+      expect(err).toBeUndefined();
+      expect(err.message).toBeUndefined();
+    }
+  });
 
 });
