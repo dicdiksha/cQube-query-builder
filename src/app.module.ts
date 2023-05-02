@@ -21,16 +21,17 @@ import { CacheModule } from '@nestjs/cache-manager';
 
   controllers: [AppController],
   providers: [AppService,
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthGuard,
+    // },
     MetricCsvService, UpdatedDateService],
   imports: [
     DatabaseModule, HttpModule,
     CacheModule.register({
       max: 100 * 1000 * 1000, //100MB
-      ttl: 1000 * 60 * 60 * 24 * 7, // 1 week(in ms)
+      ttl: 1000 * 60 * 60 * 24, // 1 week(in ms)
+      isGlobal: true,
     }),
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
