@@ -15,7 +15,7 @@ async function bootstrap() {
         .setTitle('CQUBE')
         .setDescription('[ Base URL: /v0 ]')
         .setVersion('1.0.0')
-        .build(); 
+        .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('swagger', app, document);
     app.enableCors();
