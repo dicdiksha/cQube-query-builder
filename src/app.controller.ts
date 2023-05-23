@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post, Query, Res, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AppService } from './app.service';
 import { DatabaseService } from './database/database.service';
 import { Response } from 'express';
@@ -8,12 +8,15 @@ import { UpdatedDateService } from './services/updated-date/updated-date.service
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { Public } from 'nest-keycloak-connect';
+import { CACHE_MANAGER, CacheInterceptor, CacheKey } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 
 
 @Controller()
 export class AppController {
     constructor(private readonly appService: AppService, private databaseService: DatabaseService, private metricService: MetricCsvService,
-        private updatesDate: UpdatedDateService, private configService: ConfigService, private httpService: HttpService) {
+        private updatesDate: UpdatedDateService, private configService: ConfigService, private httpService: HttpService,
+        @Inject(CACHE_MANAGER) private cacheManager: Cache) {
     }
 
     @Get()
@@ -42,6 +45,7 @@ export class AppController {
 
     }
 
+    @UseInterceptors(CacheInterceptor)
     @Post('/query')
     async executeQuery(@Body() body: any, @Res() response: Response) {
         try {

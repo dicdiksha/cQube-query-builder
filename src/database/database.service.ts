@@ -2,11 +2,13 @@ import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { Pool, QueryResult } from 'pg';
 import * as mappings from '../maps/table_names.json';
 import * as whitelist from '../maps/whitelist.json';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 @Injectable()
 export class DatabaseService {
     private readonly logger = new Logger(DatabaseService.name);
 
-    constructor(@Inject('DATABASE_POOL') private pool: Pool) {
+    constructor(@Inject('DATABASE_POOL') private pool: Pool, @Inject(CACHE_MANAGER) private cacheManager: Cache) {
     }
 
     preprocessQuery(queryText: string): string {
@@ -19,11 +21,17 @@ export class DatabaseService {
         return result;
     }
 
-    executeQuery(queryText: string, values: any[] = []): Promise<any[]> {
+    async executeQuery(queryText: string, values: any[] = []): Promise<any[]> {
         // pre processing query here
         const preprocessedQuery = this.preprocessQuery(queryText);
+        const cachedRes = await this.cacheManager.get(preprocessedQuery);
+        if (cachedRes) {
+            this.logger.debug(`Sending cached response for: ${preprocessedQuery} (${values})`);
+            return cachedRes as Promise<any[]>;
+        }
         this.logger.debug(`Executing query: ${preprocessedQuery} (${values})`);
         return this.pool.query(preprocessedQuery, values).then((result: QueryResult) => {
+            this.cacheManager.set(preprocessedQuery, result.rows, 1000 * 60 * 60 * 24)
             return result.rows;
         });
     }
