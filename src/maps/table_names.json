@@ -306,8 +306,18 @@
   "school_infra_handwash_school0academicyear": "school_infra_handwash_fmZ7a3FtY2Nob28OM1gA",
   "school_infra_solarpanel_school0academicyear": "school_infra_solarpanel_L2N5fmpnV2xSbHRoQhwD",
   "school_infra_playground_school0academicyear": "school_infra_playground_IntsfGR8XGRSbHRoQh8A",
-  "assessment_obtainedmarks_Monthly_exam0grade0academicyear0subject0lo0school":"assessment_obtainedmarks_bWBOdTt2fndsW2k7dSkK",
-  "assessment_totalmarks_Monthly_exam0grade0academicyear0subject0lo0school":"assessment_totalmarks_eTt2dmFxQlM6YwIfCgk5",
-  "nas_performance_district0lo0subject0grade":"nas_performance_U29_T3AnfHd6JmQOXhAQ",
-  "nas_performance_state0lo0subject0grade":"nas_performance_UmY3WXZhJm8AQh4UDAkA"
+  "assessment_obtainedmarks_Monthly_exam0grade0academicyear0subject0lo0school": "assessment_obtainedmarks_bWBOdTt2fndsW2k7dSkK",
+  "assessment_totalmarks_Monthly_exam0grade0academicyear0subject0lo0school": "assessment_totalmarks_eTt2dmFxQlM6YwIfCgk5",
+  "nas_performance_district0lo0subject0grade": "nas_performance_U29_T3AnfHd6JmQOXhAQ",
+  "nas_performance_state0lo0subject0grade": "nas_performance_UmY3WXZhJm8AQh4UDAkA",
+  "school_infra_cctv_school0academicyear": "school_infra_cctv_anxUZWllQgYCVhMCPgcG",
+  "school_infra_boystoilet_school0academicyear": "school_infra_boystoilet_OnF_YWJlV3RSbHRoQg0D",
+  "school_infra_girlstoilet_school0academicyear": "school_infra_girlstoilet_bT96eGFhVmFzWnhnVnoG",
+  "school_infra_electricty_school0academicyear": "school_infra_electricty_JmF_fGJqRnlSbHRoQgoA",
+  "school_infra_studentenrolment_school0academicyear": "school_infra_studentenrolment_DAEEHHRlAXpia3thXG5I",
+  "school_infra_numtoilet_school0academicyear": "school_infra_numtoilet_f3RmYmZkQlVkYHt8MAJF",
+  "school_infra_numtapwater_school0academicyear": "school_infra_numtapwater_cidofHlpTmF1WnhnVnMa",
+  "school_infra_cwsntoilet_school0academicyear": "school_infra_cwsntoilet_MGx_YWJlV3RSbHRoQgwb",
+  "school_infra_numhandpumps_school0academicyear": "school_infra_numhandpumps_cWc5YGh9TmFzfE5rWWdo",
+  "student_progression_progression_school0academicyear": "student_progression_progression_ByEQDDMDaVwnYWl1ZWlx"
 }
