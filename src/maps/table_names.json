@@ -307,5 +307,7 @@
   "school_infra_solarpanel_school0academicyear": "school_infra_solarpanel_L2N5fmpnV2xSbHRoQhwD",
   "school_infra_playground_school0academicyear": "school_infra_playground_IntsfGR8XGRSbHRoQh8A",
   "assessment_obtainedmarks_Monthly_exam0grade0academicyear0subject0lo0school":"assessment_obtainedmarks_bWBOdTt2fndsW2k7dSkK",
-  "assessment_totalmarks_Monthly_exam0grade0academicyear0subject0lo0school":"assessment_totalmarks_eTt2dmFxQlM6YwIfCgk5"
+  "assessment_totalmarks_Monthly_exam0grade0academicyear0subject0lo0school":"assessment_totalmarks_eTt2dmFxQlM6YwIfCgk5",
+  "nas_performance_district0lo0subject0grade":"nas_performance_U29_T3AnfHd6JmQOXhAQ",
+  "nas_performance_state0lo0subject0grade":"nas_performance_UmY3WXZhJm8AQh4UDAkA"
 }
