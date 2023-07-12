@@ -223,7 +223,8 @@
   "school_infra_toilet_Yearly_academicyear": "school_infra_toilet_Yearly_academicyear",
   "sch_att_teachers_marked_Yearly_school": "sch_att_teachers_marked_Yearly_school",
   "nishtha_coursecertification_state0programnishtha": "nishtha_coursecertification_HgcDMWJzbVllZ3dyRWV_",
-  "pm_poshan_category_district0categorypm": "pm_poshan_category_a3pBQHlja3gcNgAVRAYG",
+  "pm_poshan_category_district0categorypm": "pm_poshan_category_a3pbqhlja3gcngavrayg",
+  "pm_poshan_category_state0categorypm": "pm_poshan_category_cg1fx3ehcrulbwaaaaaa",
   "diksha_qr_codes_linked_to_content_grade": "diksha_qr_codes_linked_to_content_grade",
   "diksha_avg_play_time_in_mins_on_app_and_portal_medium": "diksha_avg_play_time_in_mins_on_app_and_portal_medium",
   "pgi_category_value_district": "pgi_category_value_district",
@@ -324,5 +325,9 @@
   "school_infra_numhandpumps_school0academicyear": "school_infra_numhandpumps_cWc5YGh9TmFzfE5rWWdo",
   "student_progression_progression_school0academicyear": "student_progression_progression_ByEQDDMDaVwnYWl1ZWlx",
   "ncf_categoryncf_state0categoryncf": "ncf_category_dxcdbwaaaaaaaaaamras",
-  "micro_improvements_categorymicro_state0categorymicro": "micro_improvements_categorymicro_awsinxstbm0nfnx7bwnp"
+  "micro_improvements_categorymicro_state0categorymicro": "micro_improvements_categorymicro_awsinxstbm0nfnx7bwnp",
+  "ncert_quiz_totalenrollments_state0quizncert": "ncert_quiz_totalenrollments_y3jumgpgdgjid051racv",
+  "ncert_quiz_totalenrolments_quizncert0medium": "ncert_quiz_totalenrolmentsncert_hywxdxjjcnniffgqyxr3",
+  "ncert_quiz_certificateissued_quizncert0medium": "ncert_quiz_certificateissued_cmx2f3zozmgqze9iafho",
+  "ncert_quiz_completionperc_quizncert0medium": "ncert_quiz_completionperc_bgv0aw8bbhv_chv_ggqk"
 }
