@@ -1,17 +1,17 @@
 Sr. No.,Sequence Number,Program Name,Program Information,Navigation URL,Image URL,Program Id
-1,1,Teacher Attendance,This program entails indicators to monitor reporting of attendance and presence of teachers in the jurisdiction.,/teacher-attendance,teacher_attendance.png,teacherAttendance
-2,2,PGI,Performance Grading Index,/pgi,pgi.png,pgi
-3,3,PM POSHAN,Pradhan Mantri Poshan Shakti Nirman,/pmposhan,pmposhan.png,pmPoshan
-4,4,UDISE+,Unified District Information System for Education,/udise,udise.png,udise
+1,1,NISHTHA,"NISHTHA is a capacity building programme for \""Improving Quality of School Education through Integrated Teacher Training\"". It aims to build competencies among all the teachers and school principals at the elementary stage.",/nishtha,nishtha.png,nishtha
+2,2,DIKSHA,Digital Infrastructure for Knowledge Sharing,/diksha,diksha.png,diksha
+3,3,Micro-Improvements,Micro-Improvements,/microimprovement,Micro Improvement.png,microImprovement
+4,4,PM POSHAN,Pradhan Mantri Poshan Shakti Nirman,/pmposhan,pmposhan.png,pmPoshan
 5,5,NAS,National Achievement Survey,/nas,nas.png,nas
-6,6,DIKSHA,Digital Infrastructure for Knowledge Sharing,/diksha,diksha.png,diksha
-7,7,NISHTHA,"NISHTHA is a capacity building programme for \""Improving Quality of School Education through Integrated Teacher Training\"". It aims to build competencies among all the teachers and school principals at the elementary stage.",/nishtha,nishtha.png,nishtha
-8,8,School Infrastructure,"NISHTHA is a capacity building programme for \""Improving Quality of School Education through Integrated Teacher Training\"". It aims to build competencies among all the teachers and school principals at the elementary stage.",/school-infrastructure,infra.jpeg,schoolInfrastructure
-9,9,Student Progression,This program details the compliance of schools in the state with UDISE infrastructure criteria.,/school-progression,progression.jpeg,studentProgress
-10,10,Student Assessments,Student Assessments,/student-assessments,nishtha.png,studentAssessments
-11,11,NCERT Quizes,National Curriculum Framework,/quizzes,Quizzes.png,quiz
-12,12,NCF,National Curriculum Framework,/ncf,NCF.png,ncf
-13,13,Micro-Improvements,Micro-Improvements,/microimprovement,Micro Improvement.png,microImprovement
-14,14,NIPUN Bharat,NIPUN Bharat,/nipunBharat,NIPUN BHARAT.png,nipunBharat
-15,15,E-Adhigam,e-Adhigam,/eadhigam,eadhigam.png,eadhigam
-16,16,PM SHRI,"PM SHRI initiative is intended to develop schools in which every student feels welcomed and cared for, where a safe and stimulating learning environment exists, where a wide range of learning experiences are offered, and where good physical infrastructure and appropriate resources conducive to learning are available to all students.",/pmShri,pm_shri.png,pmShri
+6,6,UDISE+,Unified District Information System for Education,/udise,udise.png,udise
+7,7,PGI,Performance Grading Index,/pgi,pgi.png,pgi
+8,8,NIPUN Bharat,NIPUN Bharat,/nipunBharat,NIPUN BHARAT.png,nipunBharat
+9,9,NCERT Quizes,National Curriculum Framework,/quizzes,Quizzes.png,quiz
+10,10,NCF,National Curriculum Framework,/ncf,NCF.png,ncf
+11,11,PM SHRI,"PM SHRI initiative is intended to develop schools in which every student feels welcomed and cared for, where a safe and stimulating learning environment exists, where a wide range of learning experiences are offered, and where good physical infrastructure and appropriate resources conducive to learning are available to all students.",/pmShri,pm_shri.png,pmShri
+12,12,Teacher Attendance,This program entails indicators to monitor reporting of attendance and presence of teachers in the jurisdiction.,/teacher-attendance,teacher_attendance.png,teacherAttendance
+13,13,School Infrastructure,"NISHTHA is a capacity building programme for \""Improving Quality of School Education through Integrated Teacher Training\"". It aims to build competencies among all the teachers and school principals at the elementary stage.",/school-infrastructure,infra.jpeg,schoolInfrastructure
+14,14,Student Progression,This program details the compliance of schools in the state with UDISE infrastructure criteria.,/school-progression,progression.jpeg,studentProgress
+15,15,Student Assessments,Student Assessments,/student-assessments,nishtha.png,studentAssessments
+16,16,E-Adhigam,e-Adhigam,/eadhigam,eadhigam.png,eadhigam
