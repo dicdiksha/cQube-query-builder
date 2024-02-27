@@ -17,11 +17,13 @@ export class AppController {
     }
 
     @Get()
+    @Public()
     getHello(): string {
         return this.appService.getHello();
     }
 
     @Get('generatejwt')
+    @Public()
     testJwt(@Res() res: Response): any {
         let jwtSecretKey = process.env.JWT_SECRET;
         let data = {
@@ -43,6 +45,7 @@ export class AppController {
     }
 
     @Post('/query')
+    @Public()
     async executeQuery(@Body() body: any, @Res() response: Response) {
         try {
             let result = await this.databaseService.executeQuery(body?.query);
@@ -56,6 +59,7 @@ export class AppController {
     }
 
     @Get('/metric')
+    @Public()
     async csvtoJson(@Res() response: Response) {
         try {
             let result = await this.metricService.convertCsvToJson();
@@ -77,6 +81,7 @@ export class AppController {
 
 
     @Get('lastmodified')
+    @Public()
     async getFileStatus(@Query() query: any, @Res() response: Response) {
         try {
             let result: any = await this.updatesDate.getLastModified(query);
@@ -133,6 +138,7 @@ export class AppController {
     }
 
     @Post('refresh_token')
+    @Public()
     async refreshToken(@Body() inputData: any, @Res() response: Response): Promise<any> {
         const keyClockurl = this.configService.get<String>('KEY_CLOCK_URL');
         const realm = this.configService.get<String>('REALM');
